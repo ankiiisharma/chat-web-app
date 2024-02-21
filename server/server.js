@@ -5,6 +5,8 @@ const WebSocket = require('ws');
 
 const wss = new WebSocket.Server({ server: http });
 
+const connectedClients = [];
+
 app.use(express.static('../client'));
 
 wss.on('connection', (ws) => { 
@@ -14,11 +16,11 @@ wss.on('connection', (ws) => {
         console.log('Received: ' + message)
 
         // Broadcast the message to all clients except the sender
-        // wss.clients.forEach(client => {
-        //     if (client !== ws && client.readyState === WebSocket.OPEN) {
-        //         client.send(message);
-        //     }
-        // });
+        connectedClients.forEach(client => {
+            if (client !== ws && client.readyState === WebSocket.OPEN) {
+                client.send(message);
+            }
+        });
     });
 
     ws.on('close', () => {
