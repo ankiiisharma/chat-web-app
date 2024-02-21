@@ -11,6 +11,15 @@ socket.onopen = function(event){
     console.log(`connected to the WebSocket Server`)
 };
 
+
+socket.onmessage = function(event){
+    const chatbox = document.getElementById(`chat-box`)
+    const newMessage = document.createElement('div')
+    newMessage.textContent = event.data;
+    chatbox.appendChild(newMessage)
+};
+
+
 socket.onerror = function(error){
     console.error('WebSocket Error:', error)
 };
