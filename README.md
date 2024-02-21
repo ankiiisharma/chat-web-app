@@ -13,4 +13,4 @@ This is a real-time chat application built using WebSocket technology. It allows
 - **Enhanced User Interface:** Enhance the user interface with additional features such as emojis, file sharing, and message formatting for a richer chat experience.
 - **Scalability Improvements:** Improve scalability and performance to handle a large number of concurrent users seamlessly.
 
-*feel free to Contribute*
+     *feel free to Contribute*
