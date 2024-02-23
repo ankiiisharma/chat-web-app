@@ -13,11 +13,25 @@ socket.onopen = function(event){
 
 
 socket.onmessage = function(event){
-    const chatbox = document.getElementById(`chat-box`)
-    const newMessage = document.createElement('div')
-    newMessage.textContent = event.data;
-    chatbox.appendChild(newMessage)
+    const chatbox = document.getElementById(`chat-box`);
+    const newMessage = document.createElement('div');
+    
+    if (typeof event.data === 'string') {
+        // If the message is text, directly append it to the new div
+        newMessage.textContent = event.data;
+    } else {
+        // If the message is binary, convert it to text
+        const blob = new Blob([event.data]);
+        const reader = new FileReader();
+        reader.onload = function() {
+            newMessage.textContent = reader.result;
+        };
+        reader.readAsText(blob);
+    }
+    
+    chatbox.appendChild(newMessage);
 };
+
 
 
 socket.onerror = function(error){
@@ -34,4 +48,4 @@ button.addEventListener('click', () => {
         socket.send(message)
         messageInput.value = ''
     }
-});
+}); 

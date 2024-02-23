@@ -11,13 +11,13 @@ app.use(express.static('../client'));
 
 wss.on('connection', (ws) => { 
     console.log("New client connected");
-
+    connectedClients.push(ws);
     ws.on('message', (message) => {
         console.log('Received: ' + message)
 
         // Broadcast the message to all clients except the sender
         connectedClients.forEach(client => {
-            if (client !== ws && client.readyState === WebSocket.OPEN) {
+            if (client.readyState === WebSocket.OPEN) {
                 client.send(message);
             }
         });
