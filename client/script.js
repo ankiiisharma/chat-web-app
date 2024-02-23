@@ -1,9 +1,10 @@
-const protocol = window.location.protocol === 'http:' ? 'wss' : 'ws' ;
+const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+
 // deciding protocol here
 
 //struct url
-// const serverUrl = `${protocol}://${window.location.host}` ;
-const serverUrl = `ws://localhost:3005` ;
+const serverUrl = `${protocol}://${window.location.host}` ;
+// const serverUrl = `ws://localhost:3005` ;
 
 const socket = new WebSocket(serverUrl);
 
