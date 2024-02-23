@@ -1,21 +1,59 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>ChatApp - WebSocket</title>
+        <style>
+            body {
+                background-color: #007bff;
+                font-family: montserrat;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            .container {
+                width: 400px; 
+                padding: 20px;
+                border-radius: 33px;
+                background-color: #f0f0f0; 
+                box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1); 
+            }
+            #chat-box {
+                height: 200px;
+                overflow-y: auto; 
+                border: 1px solid #ccc; 
+                padding: 10px; 
+                margin-bottom: 10px;
+            }
+            #chat-input {
+                width: calc(100% - 96px); 
+                padding: 9px; 
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                margin-right: -2px; 
+            }
+            #send-btn {
+                padding: 10px 20px; 
+                border: none;
+                border-radius: 5px;
+                background-color: #007bff;
+                color: white;
+                cursor: pointer; 
+            }
+        </style>
     </head>
-    <style>
-        body{
-            font-family: montserrat;
-        }
-    </style>
     <body>
-        <h2>WebChat App</h2>
+        <div class="container">
+            <h2>WebChat App</h2>
 
-        <div id="chat-box">
-            <!-- messages area -->
+            <div id="chat-box">
+                <!-- messages area -->
+            </div>
+
+            <input id="chat-input" type="text" placeholder="Enter your message here.">
+            <button id="send-btn">Send</button>
         </div>
-
-        <input id="chat-input" type="text" placeholder="enter your message here.">
-        <button id="send-btn">send</button>
         <script src="script.js"></script>
     </body>
 </html>
